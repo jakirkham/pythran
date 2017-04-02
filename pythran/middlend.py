@@ -9,7 +9,7 @@ from pythran.transformations import (ExpandBuiltins, ExpandImports,
                                      NormalizeTuples, RemoveComprehension,
                                      RemoveNestedFunctions, RemoveLambdas,
                                      UnshadowParameters, RemoveNamedArguments,
-                                     ExpandGlobals)
+                                     ExpandGlobals, Denone)
 
 
 def refine(pm, node, optimizations):
@@ -37,6 +37,7 @@ def refine(pm, node, optimizations):
 
     # sanitize input
     pm.apply(NormalizeReturn, node)
+    pm.apply(Denone, node)
     pm.apply(UnshadowParameters, node)
     pm.apply(FalsePolymorphism, node)
 
