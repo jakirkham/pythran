@@ -20,19 +20,6 @@ namespace pythonic
       template <class T>
       T denone(types::none<T> &v);
 
-      types::weak_none_type denone(types::none_type &v)
-      {
-        return {};
-      }
-      types::weak_none_type denone(types::none_type const &v)
-      {
-        return {};
-      }
-      types::weak_none_type denone(types::none_type &&v)
-      {
-        return {};
-      }
-
       template <class T>
       T denone(T v);
 

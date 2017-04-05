@@ -14,14 +14,6 @@ namespace pythonic
     template <class T>
     struct is_none;
 
-    struct weak_none_type {
-      template <class T>
-      operator T() const
-      {
-        return {};
-      }
-    };
-
     struct none_type {
       none_type();
       intptr_t id() const;
@@ -88,19 +80,6 @@ namespace pythonic
 
 /* type inference stuff { */
 #include "pythonic/include/types/combined.hpp"
-template <class T>
-struct __combined<pythonic::types::weak_none_type, T> {
-  using type = T;
-};
-template <class T>
-struct __combined<T, pythonic::types::weak_none_type> {
-  using type = T;
-};
-template <>
-struct __combined<pythonic::types::weak_none_type,
-                  pythonic::types::weak_none_type> {
-  using type = pythonic::types::weak_none_type;
-};
 
 template <class T0, class T1>
 struct __combined<pythonic::types::none<T0>, T1>

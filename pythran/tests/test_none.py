@@ -80,3 +80,24 @@ def returned_none_member(a):
                       y = x
                   return abs(y)'''
         self.run_test(code, 3, none_orelse2=[int])
+
+    def test_none_orelse3(self):
+        code = '''
+                def none_orelse3(x) :
+                  y = 3
+                  if x is None :
+                      y = 1
+                  else:
+                      y *= x
+                  return abs(y)'''
+        self.run_test(code, 3, none_orelse3=[int])
+
+    def test_none_orelse4(self):
+        code = '''
+                def none_orelse4(x) :
+                  if x is None :
+                      x = 1
+                  else:
+                      x *= 2
+                  return abs(x)'''
+        self.run_test(code, 4, none_orelse4=[int])
